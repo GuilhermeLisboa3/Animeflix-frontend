@@ -1,14 +1,18 @@
 import Head from "next/head";
-import styles from '../styles/HomeNoAuth.scss';
+import HeaderNoAuth from "../src/components/homeNoAuth/headerNoAuth";
+import styles from "../styles/HomeNoAuth.module.scss";
 
 const HomeNoAuth = () => {
   return (
     <>
       <Head>
-          <title>Home</title>
+          <title>Animeflix</title>
+          <link rel="shortcut icon" href="/buttonPlay.svg" type="image/x-icon" />
+          <meta property="og:title" content="Animeflix" key="title"/>
+          <meta name="description" content="Tenha acesso aos melhores conteúdos de anime de uma forma simples e fácil"/>
       </Head>
       <main>
-
+          <HeaderNoAuth/>
       </main>
     </>
   );

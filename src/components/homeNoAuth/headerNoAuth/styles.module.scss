@@ -1,0 +1,39 @@
+@import "../../../../styles/colors.module.scss";
+
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.imgLogoNav{
+    width: 186px;
+    height: 96px;
+}
+
+.navBtn{
+    margin: 0px 5px;
+    border-color: transparent;
+    color: $lightGray;
+    &:hover{
+        border-color: $lightRed;
+        color: white;
+        background-color: transparent;
+    }
+}
+
+@media(max-width:465px){
+    .nav{
+        justify-content: center;
+    }
+    .imgLogoNav{
+        width: 206px;
+        height: auto;
+    }
+    .navBtn{
+        margin: 16px 10px;
+        border-color: white;
+        font-size: 14px;
+    }
+}
