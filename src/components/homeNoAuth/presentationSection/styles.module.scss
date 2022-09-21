@@ -1,0 +1,80 @@
+@import "../../../../styles/colors.module.scss";
+
+.container{
+ padding-top: 5rem;
+ min-height: calc(100vh - 96px);
+}
+.subTitle{
+    font-size: 18px;
+    font-weight: bold;
+    color: $lightRed;
+}
+.title{
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+}
+.description{
+    font-size: 20px;
+    color: $lightGray;
+    margin: 20px 0px 40px 0px;
+}
+.btnCta{
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 14px 30px;
+    border: 2px solid $lightRed;
+    .btnImg{
+        width: 11px;
+    }
+    &:hover{
+        border-color: $darkRed;
+        color: $lightGray;
+        background-color: transparent;
+    }
+}
+
+.arrowDown{
+    width: 30px;
+}
+.containerImgAnimes{
+    display: none;
+}
+@media (max-width:534px){
+    .containerImgAnimes{
+        display: flex;
+        margin-bottom: 1rem;
+    }
+    .imgAnimes{
+        width: 100%;
+    }
+    .title{
+        font-size: 26px;
+        line-height: 34px;
+    }
+    .description{
+        font-size: 14px;
+    }
+    .btnCta{
+        padding: 10px 24px;
+    }
+}
+@media (max-width:534px){
+    .container{
+        padding-top: 0;
+    }
+}
+@media (max-width:359px){
+    .subTitle{
+        font-size: 14px;
+    }
+    .title{
+        font-size: 20px;
+    }
+    .description{
+        font-size: 12px;
+    }
+}
