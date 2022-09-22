@@ -12,3 +12,9 @@
         color: $lightGray;
     }
 }
+
+@media (max-width:768px){
+    .sectionTitle{
+        margin-top: 5rem;
+    }
+}

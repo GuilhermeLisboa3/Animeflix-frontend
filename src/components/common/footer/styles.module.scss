@@ -1,0 +1,22 @@
+@import '../../../../styles/colors.module.scss';
+
+.footer{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 26px 0px;
+}
+.containerIcons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.footerLink{
+    font-size: 1.3rem;
+    color: $lightRed;
+    &:hover{
+        color:$darkRed;
+    }
+}

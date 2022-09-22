@@ -7,7 +7,7 @@ const HeaderNoAuth = () => {
     <>
       <Container className={styles.nav}>
         <img
-          src="/animeflix-trasnparent.svg"
+          src="/animeflix-transparent.svg"
           alt="animeflix"
           className={styles.imgLogoNav}
         />

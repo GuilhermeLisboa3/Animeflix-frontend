@@ -1,12 +1,14 @@
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import CompatibleSection from "../src/components/homeNoAuth/compatibleSection";
+import DescriptionSection from "../src/components/homeNoAuth/descriptionSection";
 import HeaderNoAuth from "../src/components/homeNoAuth/headerNoAuth";
 import PresentationSection from "../src/components/homeNoAuth/presentationSection";
 import { SlideSection } from "../src/components/homeNoAuth/slideSection";
 import animeService, { AnimeType } from "../src/services/animesService";
 import styles from "../styles/HomeNoAuth.module.scss";
 import {ReactNode} from 'react'
+import { Footer } from "../src/components/common/footer";
+import { CompatibleDevices } from "../src/components/homeNoAuth/compatibleDevices";
 
 interface IndexPageProps {
   chrildren?: ReactNode
@@ -27,8 +29,10 @@ const HomeNoAuth = ({anime}:IndexPageProps) => {
             <HeaderNoAuth/>
             <PresentationSection/>
           </div>
-          <CompatibleSection/>
+          <DescriptionSection/>
           <SlideSection newestAnimes={anime}/>
+          <CompatibleDevices/>
+          <Footer/>
       </main>
     </>
   );

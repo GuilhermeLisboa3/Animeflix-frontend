@@ -1,7 +1,7 @@
 import styles from "./styles.module.scss";
 import { Container } from "reactstrap";
 
-const CompatibleSection = () => {
+const DescriptionSection = () => {
   return (
     <>
       <Container className={styles.container}>
@@ -26,4 +26,4 @@ const CompatibleSection = () => {
   );
 };
 
-export default CompatibleSection;
+export default DescriptionSection;
