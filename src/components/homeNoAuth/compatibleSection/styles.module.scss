@@ -1,0 +1,73 @@
+@import "../../../../styles/colors.module.scss";
+
+.container {
+  min-height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+}
+.img {
+  width: 600px;
+}
+.title {
+  font-size: 35px;
+  font-weight: bold;
+  color: $lightRed;
+}
+.description {
+  font-size: 20px;
+  color: $lightGray;
+}
+
+@media (max-width: 1177px) {
+  .img {
+    width: 500px;
+  }
+}
+@media (max-width: 993px) {
+  .img {
+    width: 450px;
+  }
+  .title {
+    font-size: 25px;
+    font-weight: bold;
+    color: $lightRed;
+  }
+  .description {
+    font-size: 16px;
+    color: $lightGray;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    min-height: auto;
+    margin-top: 0px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+  }
+  .img {
+    width: 100%;
+  }
+  .title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: $lightRed;
+  }
+  .description {
+    font-size: 18px;
+    text-align: center;
+    color: $lightGray;
+  }
+}
+@media (max-width: 534px) {
+    .title{
+        font-size: 26px;
+        line-height: 34px;
+    }
+    .description{
+        font-size: 14px;
+    }
+}

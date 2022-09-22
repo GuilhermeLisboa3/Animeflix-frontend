@@ -1,4 +1,5 @@
 import Head from "next/head";
+import CompatibleSection from "../src/components/homeNoAuth/compatibleSection";
 import HeaderNoAuth from "../src/components/homeNoAuth/headerNoAuth";
 import PresentationSection from "../src/components/homeNoAuth/presentationSection";
 import styles from "../styles/HomeNoAuth.module.scss";
@@ -17,6 +18,7 @@ const HomeNoAuth = () => {
             <HeaderNoAuth/>
             <PresentationSection/>
           </div>
+          <CompatibleSection/>
       </main>
     </>
   );

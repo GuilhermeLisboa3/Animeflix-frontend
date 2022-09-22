@@ -10,7 +10,7 @@ const PresentationSection = () => {
         <Col md className={styles.containerImgAnimes}>
             <img src="/homeNoAuth/wallpaper-phone.jpg" alt="animes" className={styles.imgAnimes}/>
         </Col>
-          <Col md className="d-flex flex-column justify-content-center align-items-start">
+          <Col md className={styles.containerDescription}>
             <p className={styles.subTitle}>ACESSO ILIMITADO</p>
             <p className={styles.title}>
               Tenha acesso aos melhores <br /> animes do mundo.
