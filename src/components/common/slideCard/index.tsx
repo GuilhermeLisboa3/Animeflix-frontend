@@ -15,7 +15,7 @@ export const SlideCard = ({ anime }: props) => {
           className={styles.slideImg}
         />
         <p className={styles.slideTitle}>{anime.name}</p>
-        <p className={styles.slideDescription}>{anime.synopsis}</p>
+        {/* <p className={styles.slideDescription}>{anime.synopsis}</p> */}
       </div>
     </>
   );

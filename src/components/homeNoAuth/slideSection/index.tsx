@@ -11,7 +11,7 @@ interface props {
 export const SlideSection = ({ newestAnimes }: props) => {
   return (
     <>
-      <Container>
+      <Container className="d-flex flex-column align-items-center py-5">
         <p className={styles.sectionTitle}>ANIMES JÁ DISPONÍVEIS</p>
         <SlideComponent anime={newestAnimes}/>
         <Link href="/register">
