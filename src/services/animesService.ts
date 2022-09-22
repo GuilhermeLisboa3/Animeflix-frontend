@@ -19,7 +19,6 @@ export type AnimeType = {
 const animeService = {
   getNewestAnimes: async () => {
     const res = await api.get("/animes/newest").catch((err) => {
-      console.log(err.response.data.message);
       return err.response;
     });
     return res
