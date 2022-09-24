@@ -3,7 +3,7 @@ import Head from "next/head";
 import { HeaderGeneric } from "../src/components/common/headerGeneric";
 import { Form, FormGroup, Label, Container, Button, Input } from "reactstrap";
 import { Footer } from "../src/components/common/footer";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { authService } from "../src/services/authService";
 import { useRouter } from "next/router";
 import { ToastComponet } from "../src/components/common/toast";
@@ -12,6 +12,12 @@ const Register = () => {
   const router = useRouter();
   const [toastIsOpen, setToastIsOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+
+  useEffect(()=>{
+    if(sessionStorage.getItem("animeflix-token")){
+      router.push("/home")
+    }
+  },[])
 
   const handleRegister = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
