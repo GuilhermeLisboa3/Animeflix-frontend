@@ -2,7 +2,6 @@ import useSWR from "swr";
 import categoriesService, {
   CategoryType,
 } from "../../../services/categoriesService";
-import styles from "../../../../styles/slideCategory.module.scss";
 import { ListCategoriesSlide } from "../listCategorySlide";
 
 export const ListCategories = () => {

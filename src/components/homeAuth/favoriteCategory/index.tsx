@@ -17,7 +17,7 @@ export const FavoriteCategory = () => {
     <>
       <p className={styles.titleCategory}>MINHA LISTA</p>
       {data.data.animes.length >= 1 ? (
-        <SlideComponent anime={data.data.anime}/>
+        <SlideComponent anime={data.data.animes}/>
       ) : (
         <p className="text-center pt-3 h5">
             <strong>Você não tem nenhum curso na lista</strong>
