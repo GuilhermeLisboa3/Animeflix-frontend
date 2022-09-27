@@ -7,6 +7,10 @@ interface UserParams {
   email: string;
   created_at: string;
 }
+interface PasswordParams {
+  currentPassword: string;
+  newPassword: string;
+}
 
 const profileService = {
   fetchCurrent: async () => {
@@ -29,6 +33,24 @@ const profileService = {
 
     const res = await api
       .put("/users/current", params, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 401) {
+          return err.response;
+        }
+
+        return err;
+      });
+
+    return res.status;
+  },
+  passwordUpdate: async (params: PasswordParams) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .put("/users/current/password", params, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
