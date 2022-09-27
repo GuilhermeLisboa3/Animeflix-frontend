@@ -2,16 +2,13 @@ import useSWR from "swr";
 import styles from "../../../../styles/slideCategory.module.scss";
 import animeService from "../../../services/animesService";
 import { SlideComponent } from "../../common/slideComponent";
+import { PageSpinner } from "../../common/spinner";
 
 export const FavoriteCategory = () => {
   const { data, error } = useSWR("/favAnime", animeService.getFavAnimes);
   if (error) return error;
   if (!data) {
-    return (
-      <>
-        <p>Loading...</p>
-      </>
-    );
+    return <PageSpinner/>;
   }
   return (
     <>

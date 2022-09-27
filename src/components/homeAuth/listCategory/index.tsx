@@ -2,6 +2,7 @@ import useSWR from "swr";
 import categoriesService, {
   CategoryType,
 } from "../../../services/categoriesService";
+import { PageSpinner } from "../../common/spinner";
 import { ListCategoriesSlide } from "../listCategorySlide";
 
 export const ListCategories = () => {
@@ -11,11 +12,7 @@ export const ListCategories = () => {
   );
   if (error) return error;
   if (!data) {
-    return (
-      <>
-        <p>Loading...</p>
-      </>
-    );
+    return <PageSpinner/>;
   }
   return (
     <>

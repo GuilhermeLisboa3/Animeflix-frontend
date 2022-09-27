@@ -4,16 +4,13 @@ import animeService, { AnimeType } from "../../../services/animesService";
 import { HeaderAuth } from "../../common/headerAuth";
 import { Button, Container } from "reactstrap";
 import Link from "next/link";
+import { PageSpinner } from "../../common/spinner";
 
 export const FeaturedSection = () => {
   const { data, error } = useSwr("/featured", animeService.getFeaturedAnimes);
   if (error) return error;
   if (!data) {
-    return (
-      <>
-        <p>Loading...</p>
-      </>
-    );
+    return <PageSpinner/>;
   }
   return (
     <>
