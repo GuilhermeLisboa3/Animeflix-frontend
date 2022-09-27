@@ -15,11 +15,11 @@ const Profile = () => {
         <title>Animeflix - Meus Dados</title>
         <link rel="shortcut icon" href="/buttonPlay.svg" type="image/x-icon" />
       </Head>
-      <main>
+      <main className={styles.main}>
         <div className={styles.header}>
           <HeaderAuth />
         </div>
-        <Container className="py-5">
+        <Container className={styles.gridContainer}>
           <p className={styles.title}>Minha Conta</p>
           <Row className="pt-3 pb-5">
             <Col md={4} className={styles.btnColumn}>
@@ -47,10 +47,10 @@ const Profile = () => {
             </Col>
           </Row>
         </Container>
-      </main>
         <div className={styles.footer}>
           <Footer />
         </div>
+      </main>
     </>
   );
 };

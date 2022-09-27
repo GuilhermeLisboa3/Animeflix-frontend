@@ -80,6 +80,19 @@ const animeService = {
       });
     return res;
   },
+  getSearch: async (name: string) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .get(`/animes/search?name=${name}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
 };
 
 export default animeService;
