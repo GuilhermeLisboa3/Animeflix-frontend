@@ -80,10 +80,53 @@ const animeService = {
       });
     return res;
   },
+  like: async (animeId: number | string) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .post(
+        "/likes",
+        { animeId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
+  removeLike: async (animeId: number | string) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .delete(`/likes/${animeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
   getSearch: async (name: string) => {
     const token = sessionStorage.getItem("animeflix-token");
     const res = await api
       .get(`/animes/search?name=${name}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
+  getEpisodes: async (id: string | number) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .get(`/animes/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

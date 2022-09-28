@@ -17,7 +17,6 @@ const Search = () => {
     const res = await animeService.getSearch(searchName);
     setSearchResult(res.data.animes);
   };
-  console.log(searchResult);
 
   useEffect(() => {
     searchAnime();
@@ -34,7 +33,7 @@ const Search = () => {
           <HeaderAuth />
         </div>
         {searchResult.length >= 1 ? (
-          <div className={styles.searchResult}>
+          <div className={styles.searchContainer}>
             <Container className="d-flex flex-wrap justify-content-center gap-5 py-4">
               {searchResult?.map((anime) => (
                 <SearchCard key={anime.id} anime={anime} />
@@ -42,7 +41,9 @@ const Search = () => {
             </Container>
           </div>
         ) : (
-          <p className={styles.noSearchTetx}>Nenhum resultado encontrado!</p>
+          <div className={styles.searchContainer}>
+            <p className={styles.noSearchTetx}>Nenhum resultado encontrado!</p>
+          </div>
         )}
         <div className={styles.headerFooterBg}>
           <Footer/>
