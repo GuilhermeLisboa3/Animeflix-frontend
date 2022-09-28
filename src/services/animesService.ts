@@ -56,11 +56,11 @@ const animeService = {
   removeFav: async (animeId: string | number) => {
     const token = sessionStorage.getItem("animeflix-token");
     const res = await api
-      .delete("/favorites", {
+      .delete(`/favorites/${animeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        data: { animeId },
+        
       })
       .catch((err) => {
         return err.response;

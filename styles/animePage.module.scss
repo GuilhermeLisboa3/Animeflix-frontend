@@ -1,0 +1,104 @@
+@import "./colors.module.scss";
+
+.animeInfo{
+    margin-top: -120px;
+}
+.animeTitle{
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 25px;
+    width: 700px;
+}
+.animeDescription{
+    color: $lightGray;
+    width: 650px;
+    padding-bottom: 25px;
+}
+.animeBtn{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 35px;
+    color: white;
+    border-color: $lightRed;
+    &:hover{
+        border-color:$darkRed;
+        color: $lightGray;
+        background-color: transparent;
+    }
+}
+.buttonImg{
+    width: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.interactions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px;
+}
+.interactionImages{
+    font-size: 2.3rem;
+    cursor: pointer;
+    color: $lightRed;
+    transition: 0.4s;
+}
+.interactionLikedImages{
+    @extend .interactionImages;
+    color: #3975D7;
+}
+.interactionFullLikedImages{
+    @extend .interactionImages;
+    color: #3975D7;
+}
+.interactionFullImages{
+    @extend .interactionImages;
+    color: $lightRed;
+}
+
+
+.episodeInfo{
+    padding: 60px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.episodeDivision{
+    font-weight: bold;
+    border-bottom: 1px solid $lightRed;
+    padding: 3px 14px;
+    margin-bottom: 10px;
+}
+
+.episodeLength{
+    color: $lightGray;
+    margin-bottom: 40px;
+}
+
+@media(max-width:768px){
+    .animeTitle{
+        font-size: 26px;
+        width: 99%;
+    }
+    .animeDescription{
+        width: 95%;
+    }
+}
+@media(max-width:400px){
+    .animeInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .animeTitle{
+        font-size: 22px;
+    }
+    .animeDescription{
+        font-size: 14px;
+    }
+}

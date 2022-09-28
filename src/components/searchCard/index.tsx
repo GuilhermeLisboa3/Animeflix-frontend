@@ -9,7 +9,7 @@ interface props {
 export const SearchCard = ({ anime }: props) => {
   return (
     <>
-      <Link href={`/animes/${anime.id}`}>
+      <Link href={`/anime/${anime.id}`}>
         <div className={styles.searchCard}>
           <img
             src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`}
