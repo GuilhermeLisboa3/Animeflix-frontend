@@ -132,7 +132,7 @@ const AnimePage = () => {
             </p>
           ) : (
             anime?.episodes?.map((episode) => (
-              <EpisodiosList key={episode.id} episode={episode} />
+              <EpisodiosList key={episode.id} episode={episode} anime={anime} />
             ))
           )}
         </Container>

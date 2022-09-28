@@ -1,0 +1,182 @@
+@import "./colors.module.scss";
+.episodeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 4rem;
+  position: relative;
+}
+.episodeTitle {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+.player {
+  max-width: 100%;
+}
+
+.DescriptionEpisode {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.animeTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+.animeDescription {
+  width: 600px;
+  font-size: 16px;
+  color: $lightGray;
+}
+
+.episodeButtonLeft {
+  position: absolute;
+  left: 10px;
+  top: 45%;
+  min-height: 60px;
+  min-width: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid $lightRed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: transparent;
+  }
+  &:disabled {
+    background-color: transparent;
+    padding: 0;
+  }
+  &:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+.episodeButtonRight {
+  position: absolute;
+  right: 10px;
+  top: 45%;
+  min-height: 60px;
+  min-width: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid $lightRed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: transparent;
+  }
+  &:disabled {
+    background-color: transparent;
+    padding: 0;
+  }
+  &:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+}
+.TextBtnDirection{
+    display: none;
+}
+.icon {
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .episodeContainer {
+    padding-top: 0;
+  }
+  .containerButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  .TextBtnDirection{
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .episodeButtonLeft {
+    position: inherit;
+  }
+  .episodeButtonRight {
+    position: inherit;
+  }
+}
+@media (max-width: 684px) {
+    .animeDescription {
+        width: 100%;
+    }
+
+}
+@media (max-width: 425px) {
+  .episodeTitle {
+    font-size: 20px;
+    padding: 0px 10px;
+    word-wrap: break-word;
+  }
+  .player {
+    max-width: 100%;
+    margin-top: -60px;
+  }
+  .TextBtnDirection{
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .episodeButtonLeft {
+    min-height: 45px;
+    min-width: 45px;
+    position: inherit;
+  }
+  .episodeButtonRight {
+    min-height: 45px;
+    min-width: 45px;
+    position: inherit;
+  }
+  .icon {
+    font-size: 20px;
+  }
+}
+@media (max-width: 310px) {
+  .TextBtnDirection{
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .episodeButtonLeft {
+    min-height: 40px;
+    min-width: 40px;
+    position: inherit;
+  }
+  .episodeButtonRight {
+    min-height: 40px;
+    min-width: 40px;
+    position: inherit;
+  }
+  .icon {
+    font-size: 15px;
+  }
+}
