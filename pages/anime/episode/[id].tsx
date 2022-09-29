@@ -2,7 +2,7 @@ import styles from "../../../styles/episodePlayer.module.scss";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { HeaderGeneric } from "../../../src/components/common/headerGeneric";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import animeService, { AnimeType } from "../../../src/services/animesService";
 import { PageSpinner } from "../../../src/components/common/spinner";
 import { Button, Container } from "reactstrap";
@@ -11,12 +11,49 @@ import {
   MdOutlineArrowBackIosNew,
   MdOutlineArrowForwardIos,
 } from "react-icons/md";
+import { watchEpisodeService } from "../../../src/services/episodeService";
 
 const EpisodePlayer = () => {
   const router = useRouter();
   const [anime, setAnime] = useState<AnimeType>();
+
+  const [isReady, setIsReady] = useState(false);
+  const [getEpisodeTime, setGetEpisodeTime] = useState(0);
+  const [episodeTime, setEpisodeTime] = useState(0);
+
+  const playerRef = useRef<ReactPlayer>(null);
+
   const episodeOrder = parseFloat(router.query.id?.toString() || "");
+  const episodeId = parseFloat(router.query.episodeid?.toString() || "");
   const animeId = router.query.animeid?.toString() || "";
+
+  const handleGetEpisodeTime = async () => {
+    const res = await watchEpisodeService.getWatchTime(episodeId);
+    console.log(res.data);
+    if (res.data !== null) {
+      setGetEpisodeTime(res.data.seconds);
+    }
+  };
+
+  const handleSetEpisodeTime = async () => {
+    await watchEpisodeService.setWatchTime({
+      episodeId: episodeId,
+      seconds: Math.round(episodeTime),
+    });
+  };
+  useEffect(() => {
+    handleGetEpisodeTime();
+  }, [router]);
+
+  const handlePlayerTime = () => {
+    playerRef.current?.seekTo(getEpisodeTime);
+    setIsReady(true);
+  };
+  if (isReady === true) {
+    setTimeout(() => {
+      handleSetEpisodeTime();
+    }, 1000 * 3);
+  }
 
   const getAnime = async () => {
     if (typeof animeId !== "string") return;
@@ -29,10 +66,18 @@ const EpisodePlayer = () => {
   };
 
   const handleLastEpisode = () => {
-    router.push(`/anime/episode/${episodeOrder - 1}?animeId=${anime?.id}`);
+    router.push(
+      `/anime/episode/${episodeOrder - 1}?animeId=${anime?.id}&episodeid=${
+        episodeId - 1
+      }`
+    );
   };
   const handleNextEpisode = () => {
-    router.push(`/anime/episode/${episodeOrder + 1}?animeId=${anime?.id}`);
+    router.push(
+      `/anime/episode/${episodeOrder + 1}?animeId=${anime?.id}&episodeid=${
+        episodeId + 1
+      }`
+    );
   };
 
   useEffect(() => {
@@ -40,6 +85,12 @@ const EpisodePlayer = () => {
   }, [animeId]);
 
   if (anime?.episodes === undefined) return <PageSpinner />;
+
+  if (episodeOrder + 1 < anime?.episodes.length) {
+    if (Math.round(episodeTime) === anime.episodes[episodeOrder].secondsLong) {
+      handleNextEpisode();
+    }
+  }
 
   return (
     <>
@@ -61,12 +112,12 @@ const EpisodePlayer = () => {
                 disabled={episodeOrder === 0 ? true : false}
                 onClick={handleLastEpisode}
               >
-                <MdOutlineArrowBackIosNew className={styles.icon}/>
+                <MdOutlineArrowBackIosNew className={styles.icon} />
               </Button>
               <p className={styles.TextBtnDirection}>Anterior</p>
             </div>
             <div className="d-flex align-items-center gap-3">
-            <p className={styles.TextBtnDirection}>Próximo</p>
+              <p className={styles.TextBtnDirection}>Próximo</p>
               <Button
                 className={styles.episodeButtonRight}
                 disabled={
@@ -74,7 +125,7 @@ const EpisodePlayer = () => {
                 }
                 onClick={handleNextEpisode}
               >
-                <MdOutlineArrowForwardIos className={styles.icon}/>
+                <MdOutlineArrowForwardIos className={styles.icon} />
               </Button>
             </div>
           </div>
@@ -91,6 +142,11 @@ const EpisodePlayer = () => {
                 anime.episodes[episodeOrder].videoUrl
               }&token=${sessionStorage.getItem("animeflix-token")}`}
               controls
+              ref={playerRef}
+              onStart={handlePlayerTime}
+              onProgress={(progress) => {
+                setEpisodeTime(progress.playedSeconds);
+              }}
             />
           )}
           <div className={styles.DescriptionEpisode}>

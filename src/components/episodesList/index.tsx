@@ -23,7 +23,7 @@ export const EpisodiosList = ({ episode, anime }: props) => {
   };
 
   const handleEpisodePlayer = () => {
-    router.push(`/anime/episode/${episode.order - 1}?animeid=${anime.id}`);
+    router.push(`/anime/episode/${episode.order - 1}?animeid=${anime.id}&episodeid=${episode.id}`);
   };
   return (
     <>
