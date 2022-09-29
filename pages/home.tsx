@@ -8,6 +8,7 @@ import { FeaturedCategory } from "../src/components/homeAuth/featuredCategory";
 import { FeaturedSection } from "../src/components/homeAuth/featuresSection";
 import { ListCategories } from "../src/components/homeAuth/listCategory";
 import { NewestCategory } from "../src/components/homeAuth/newestCategory";
+import { PopularAnime } from "../src/components/homeAuth/popularAnime";
 
 const HomeAuth = () => {
   const router = useRouter()
@@ -33,6 +34,7 @@ const HomeAuth = () => {
       <main>
        <FeaturedSection/>
        <FavoriteCategory/>
+       <PopularAnime/>
        <NewestCategory/>
        <FeaturedCategory/>
        <ListCategories/>

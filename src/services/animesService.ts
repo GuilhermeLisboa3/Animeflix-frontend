@@ -12,8 +12,10 @@ export type AnimeType = {
   id: number;
   name: string;
   thumbnailUrl: string;
+  thumbnailurl?: string;
   synopsis: string;
   episodes?: EpisodesType[];
+  likes?:number
 };
 
 const animeService = {
@@ -60,7 +62,6 @@ const animeService = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        
       })
       .catch((err) => {
         return err.response;
@@ -127,6 +128,19 @@ const animeService = {
     const token = sessionStorage.getItem("animeflix-token");
     const res = await api
       .get(`/animes/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
+  getPopularAnime: async () => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .get("/animes/popular", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

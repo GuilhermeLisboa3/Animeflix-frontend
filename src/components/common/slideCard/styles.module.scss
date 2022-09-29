@@ -1,8 +1,9 @@
 @import "../../../../styles/colors.module.scss";
 
 .slide{
+    position: relative;
     width: 280px;
-    height: 220px;
+    height: 230px;
     border: 1px solid $darkGray;
     cursor: pointer;
     transition: 0.4s;
@@ -23,6 +24,27 @@
     font-weight: bold;
     text-align: center;
     padding: 8px 0;
+}
+.containerLikes{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    gap: 2px;
+    color: white;
+    position: absolute;
+    bottom: 5px ;
+    right: 5px ;
+}
+.iconLike{
+    color: #3975D7;
+    font-size: 18px;
+}
+.titleLikes{
+    color: $lightGray;
+    font-size: 18px;
+    font-weight: bold;
+    height: 22px;
 }
 @media(max-width:1200px){
     .slide{
