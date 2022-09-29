@@ -7,20 +7,33 @@ import animeService, { AnimeType } from "../src/services/animesService";
 import { Container } from "reactstrap";
 import { SearchCard } from "../src/components/searchCard";
 import { Footer } from "../src/components/common/footer";
+import { PageSpinner } from "../src/components/common/spinner";
 
 const Search = () => {
   const router = useRouter();
   const searchName: any = router.query.name;
   const [searchResult, setSearchResult] = useState<AnimeType[]>([]);
-
-  const searchAnime = async () => {
-    const res = await animeService.getSearch(searchName);
-    setSearchResult(res.data.animes);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     searchAnime();
   }, [searchName]);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("animeflix-token")) {
+      router.push("/login");
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading) {
+    return <PageSpinner />;
+  }
+  const searchAnime = async () => {
+    const res = await animeService.getSearch(searchName);
+    setSearchResult(res.data.animes);
+  };
 
   return (
     <>
@@ -46,7 +59,7 @@ const Search = () => {
           </div>
         )}
         <div className={styles.headerFooterBg}>
-          <Footer/>
+          <Footer />
         </div>
       </main>
     </>

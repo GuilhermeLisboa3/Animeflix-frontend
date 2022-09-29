@@ -20,12 +20,14 @@ const EpisodePlayer = () => {
   const [isReady, setIsReady] = useState(false);
   const [getEpisodeTime, setGetEpisodeTime] = useState(0);
   const [episodeTime, setEpisodeTime] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const playerRef = useRef<ReactPlayer>(null);
 
   const episodeOrder = parseFloat(router.query.id?.toString() || "");
   const episodeId = parseFloat(router.query.episodeid?.toString() || "");
   const animeId = router.query.animeid?.toString() || "";
+
 
   const handleGetEpisodeTime = async () => {
     const res = await watchEpisodeService.getWatchTime(episodeId);
@@ -35,15 +37,16 @@ const EpisodePlayer = () => {
     }
   };
 
+  useEffect(() => {
+    handleGetEpisodeTime();
+  }, [router]);
+
   const handleSetEpisodeTime = async () => {
     await watchEpisodeService.setWatchTime({
       episodeId: episodeId,
       seconds: Math.round(episodeTime),
     });
   };
-  useEffect(() => {
-    handleGetEpisodeTime();
-  }, [router]);
 
   const handlePlayerTime = () => {
     playerRef.current?.seekTo(getEpisodeTime);
@@ -65,6 +68,8 @@ const EpisodePlayer = () => {
     }
   };
 
+
+
   const handleLastEpisode = () => {
     router.push(
       `/anime/episode/${episodeOrder - 1}?animeId=${anime?.id}&episodeid=${
@@ -84,12 +89,24 @@ const EpisodePlayer = () => {
     getAnime();
   }, [animeId]);
 
+  useEffect(() => {
+    if (!sessionStorage.getItem("animeflix-token")) {
+      router.push("/login");
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
   if (anime?.episodes === undefined) return <PageSpinner />;
 
   if (episodeOrder + 1 < anime?.episodes.length) {
     if (Math.round(episodeTime) === anime.episodes[episodeOrder].secondsLong) {
       handleNextEpisode();
     }
+  }
+
+  if (loading) {
+    return <PageSpinner />;
   }
 
   return (

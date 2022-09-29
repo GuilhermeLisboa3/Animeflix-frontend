@@ -16,11 +16,20 @@ import { EpisodiosList } from "../../src/components/episodesList";
 import { Footer } from "../../src/components/common/footer";
 
 const AnimePage = () => {
+  const [loading, setLoading] = useState(true);
   const [anime, setAnime] = useState<AnimeType>();
   const [liked, setLiked] = useState(false);
   const [favorited, setFavorited] = useState(false);
   const router = useRouter();
   const { id } = router.query;
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("animeflix-token")) {
+      router.push("/login");
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
   const getAnime = async () => {
     if (typeof id !== "string") return;
@@ -58,6 +67,10 @@ const AnimePage = () => {
     }
   };
 
+
+  if (loading) {
+    return <PageSpinner />;
+  }
   if (anime === undefined) return <PageSpinner />;
 
   return (
@@ -136,7 +149,7 @@ const AnimePage = () => {
             ))
           )}
         </Container>
-        <Footer/>
+        <Footer />
       </main>
     </>
   );
