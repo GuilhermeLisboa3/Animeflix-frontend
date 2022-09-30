@@ -15,7 +15,24 @@ export type AnimeType = {
   thumbnailurl?: string;
   synopsis: string;
   episodes?: EpisodesType[];
-  likes?:number
+  likes?: number;
+};
+export type EpisodeWatchingTime = {
+  id: number;
+  name: string;
+  synopsis: string;
+  order: number;
+  videoUrl: string;
+  secondsLong: number;
+  Anime: {
+    id: number;
+    name: string;
+    synopsis: string;
+    thumbnailUrl: string;
+  };
+  watchTime: {
+    seconds: number;
+  };
 };
 
 const animeService = {
@@ -141,6 +158,19 @@ const animeService = {
     const token = sessionStorage.getItem("animeflix-token");
     const res = await api
       .get("/animes/popular", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
+  getWatchingAnimes: async () => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .get("/users/current/watching", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
