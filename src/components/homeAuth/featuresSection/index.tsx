@@ -29,7 +29,7 @@ export const FeaturedSection = () => {
             <Container className="pt-5">
               <p className={styles.title}>{anime.name}</p>
               <p className={styles.description}>{anime.synopsis}</p>
-              <Link href={`/animes/${anime.id}`}>
+              <Link href={`/anime/${anime.id}`}>
                 <Button outline color="light" className={styles.button}>
                   ACESSE AGORA!
                   <img

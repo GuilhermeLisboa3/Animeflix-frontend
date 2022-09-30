@@ -73,6 +73,12 @@ const AnimePage = () => {
   }
   if (anime === undefined) return <PageSpinner />;
 
+  const handleEpisodePlayer = () => {
+    anime?.episodes?.map((episode) => {
+      router.push(`/anime/episode/${episode.order - 1}?animeid=${anime.id}&episodeid=${episode.id}`);
+    })
+  };
+
   return (
     <>
       <Head>
@@ -97,6 +103,7 @@ const AnimePage = () => {
             outline
             className={styles.animeBtn}
             disabled={anime?.episodes?.length === 0 ? true : false}
+            onClick={handleEpisodePlayer}
           >
             ASSISTIR AGORA!
             <img

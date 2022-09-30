@@ -15,6 +15,11 @@ const Search = () => {
   const [searchResult, setSearchResult] = useState<AnimeType[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const searchAnime = async () => {
+    const res = await animeService.getSearch(searchName);
+    setSearchResult(res.data.animes);
+  };
+
   useEffect(() => {
     searchAnime();
   }, [searchName]);
@@ -30,10 +35,6 @@ const Search = () => {
   if (loading) {
     return <PageSpinner />;
   }
-  const searchAnime = async () => {
-    const res = await animeService.getSearch(searchName);
-    setSearchResult(res.data.animes);
-  };
 
   return (
     <>
