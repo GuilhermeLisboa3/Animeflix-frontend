@@ -20,6 +20,7 @@ const EpisodePlayer = () => {
   const [isReady, setIsReady] = useState(false);
   const [getEpisodeTime, setGetEpisodeTime] = useState(0);
   const [episodeTime, setEpisodeTime] = useState(0);
+  const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(true);
 
   const playerRef = useRef<ReactPlayer>(null);
@@ -28,10 +29,8 @@ const EpisodePlayer = () => {
   const episodeId = parseFloat(router.query.episodeid?.toString() || "");
   const animeId = router.query.animeid?.toString() || "";
 
-
   const handleGetEpisodeTime = async () => {
     const res = await watchEpisodeService.getWatchTime(episodeId);
-    console.log(res.data);
     if (res.data !== null) {
       setGetEpisodeTime(res.data.seconds);
     }
@@ -68,7 +67,11 @@ const EpisodePlayer = () => {
     }
   };
 
-
+  const getUrl = async () => {
+    const res = await watchEpisodeService.getStreamEpisode({ animeId: parseFloat(animeId), order: episodeOrder + 1 })
+    setUrl(res.data)
+  }
+  getUrl()
 
   const handleLastEpisode = () => {
     router.push(
@@ -153,11 +156,7 @@ const EpisodePlayer = () => {
           {typeof window === "undefined" ? null : (
             <ReactPlayer
               className={styles.player}
-              url={`${
-                process.env.NEXT_PUBLIC_BASEURL
-              }/episodes/stream?videoUrl=${
-                anime.episodes[episodeOrder].videoUrl
-              }&token=${sessionStorage.getItem("animeflix-token")}`}
+              url={ url }
               controls
               ref={playerRef}
               onStart={handlePlayerTime}

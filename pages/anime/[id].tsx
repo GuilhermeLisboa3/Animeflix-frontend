@@ -88,7 +88,7 @@ const AnimePage = () => {
       <main>
         <div
           style={{
-            backgroundImage: `linear-gradient(to bottom, #6666661a, #151515), url(${process.env.NEXT_PUBLIC_BASEURL}/${anime?.thumbnailUrl})`,
+            backgroundImage: `linear-gradient(to bottom, #6666661a, #151515), url(${anime?.thumbnailUrl})`,
             backgroundSize: "cover",
             backgroundPosition: "center center",
             minHeight: "550px",

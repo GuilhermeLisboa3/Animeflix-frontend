@@ -51,14 +51,14 @@ const Register = () => {
     }
 
     const { data, status } = await authService.register(params);
-    if (status === 201) {
+    if (status === 200) {
       router.push("/login?registred=true");
     } else {
       setToastIsOpen(true);
       setTimeout(() => {
         setToastIsOpen(false);
       }, 1000 * 3);
-      setToastMessage(data.message);
+      setToastMessage(data.error);
     }
   };
 

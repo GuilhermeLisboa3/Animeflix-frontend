@@ -13,7 +13,7 @@ export const SlideCard = ({ anime }: props) => {
       <Link href={`anime/${anime.id}`}>
         <div className={styles.slide}>
           <img
-            src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl || anime.thumbnailurl}`}
+            src={`${anime.thumbnailUrl || anime.thumbnailurl}`}
             alt={anime.name}
             className={styles.slideImg}
           />

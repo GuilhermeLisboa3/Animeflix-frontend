@@ -12,7 +12,7 @@ export const SearchCard = ({ anime }: props) => {
       <Link href={`/anime/${anime.id}`}>
         <div className={styles.searchCard}>
           <img
-            src={`${process.env.NEXT_PUBLIC_BASEURL}/${anime.thumbnailUrl}`}
+            src={`${anime.thumbnailUrl}`}
             alt={anime.name}
             className={styles.searchCardImg}
           />

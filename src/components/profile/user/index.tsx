@@ -46,7 +46,7 @@ export const UserForm = () => {
       created_at,
     });
 
-    if (res === 200) {
+    if (res === 204) {
       setToasIsOpen(true);
       setErrorMessage("Informações alteradas com sucesso!");
       setColor("bg-success");

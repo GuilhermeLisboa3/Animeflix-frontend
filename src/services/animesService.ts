@@ -24,7 +24,7 @@ export type EpisodeWatchingTime = {
   order: number;
   videoUrl: string;
   secondsLong: number;
-  Anime: {
+  anime: {
     id: number;
     name: string;
     synopsis: string;
@@ -179,7 +179,7 @@ const animeService = {
         return err.response;
       });
     return res;
-  },
+  }
 };
 
 export default animeService;

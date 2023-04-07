@@ -32,7 +32,7 @@ export const authService = {
       return err
     });
     if(res.status === 200){
-      sessionStorage.setItem("animeflix-token", res.data.token)
+      sessionStorage.setItem("animeflix-token", res.data.accessToken)
     }
     return res;
   },

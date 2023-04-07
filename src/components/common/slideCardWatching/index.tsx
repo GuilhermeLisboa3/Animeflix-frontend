@@ -10,15 +10,15 @@ export const SlideCardWatching = ({ anime }: props) => {
   const router = useRouter()
 
   const handleEpisodePlayer = () => {
-    router.push(`/anime/episode/${anime.order - 1}?animeid=${anime.Anime.id}&episodeid=${anime.id}`);
+    router.push(`/anime/episode/${anime.order - 1}?animeid=${anime.anime.id}&episodeid=${anime.id}`);
   };
   return (
     <>
       <div onClick={handleEpisodePlayer}>
           <div className={styles.slide}>
             <img
-              src={`${process.env.NEXT_PUBLIC_BASEURL}/${
-                anime.Anime.thumbnailUrl
+              src={`${
+                anime.anime.thumbnailUrl
               }`}
               alt={anime.name}
               className={styles.slideImg}

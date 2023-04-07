@@ -36,4 +36,14 @@ export const watchEpisodeService = {
       });
     return res;
   },
+
+  getStreamEpisode: async ({ animeId, order }: { animeId: number, order: number}) => {
+    const token = sessionStorage.getItem("animeflix-token");
+    const res = await api
+      .get(`/episode/stream?token=${token}&animeId=${animeId}&order=${order}`,)
+      .catch((err) => {
+        return err.response;
+      });
+    return res;
+  },
 };
