@@ -92,7 +92,7 @@ const Login = () => {
                 name="password"
                 type="password"
                 placeholder="Qual a sua senha?"
-                minLength={6}
+                minLength={5}
                 maxLength={20}
                 required
                 className={styles.input}

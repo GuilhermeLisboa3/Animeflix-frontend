@@ -167,7 +167,7 @@ const Register = () => {
                 type="password"
                 placeholder="Digite a sua senha (Min: 6 | Max: 20)"
                 required
-                minLength={6}
+                minLength={5}
                 maxLength={20}
                 className={styles.input}
               />
@@ -183,7 +183,7 @@ const Register = () => {
                 type="password"
                 placeholder="Confirme a sua senha"
                 required
-                minLength={6}
+                minLength={5}
                 maxLength={20}
                 className={styles.input}
               />
